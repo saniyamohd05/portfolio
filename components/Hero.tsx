@@ -46,10 +46,18 @@ const Hero = () => {
   }
 
   const downloadResume = () => {
-    const link = document.createElement("a")
-    link.href = "/placeholder.svg?height=800&width=600&text=Saniya's Resume"
-    link.download = "Saniya_Resume.pdf"
-    link.click()
+    try {
+      const link = document.createElement("a")
+      link.href = "/Saniya_Resume.pdf"
+      link.download = "Saniya_Mohd_Resume.pdf"
+      link.target = "_blank"
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (error) {
+      // Fallback: open a new window with resume content
+      window.open("https://drive.google.com/file/d/your-resume-id/view", "_blank")
+    }
   }
 
   return (
